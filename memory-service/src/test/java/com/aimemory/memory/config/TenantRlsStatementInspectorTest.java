@@ -45,7 +45,7 @@ class TenantRlsStatementInspectorTest {
         String result = inspector.inspect(sql);
 
         // Assert
-        assertThat(result).startsWith("WITH rls_ctx AS (SELECT set_config('app.current_tenant_id', '" + tenantId + "', true))");
+        assertThat(result).contains("SET LOCAL app.current_tenant_id = '" + tenantId + "'");
         assertThat(result).contains(sql);
     }
 

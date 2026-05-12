@@ -75,11 +75,11 @@ public class TenantRlsIntegrationTest {
         String sql = "INSERT INTO memories (tenant_id, user_id, content, memory_type, source_conversation_id, source_session_id, embedding_model_version, embedding_dimension, importance_score, retrieval_count, last_retrieved_at, version, soft_deleted, created_at, updated_at) " +
                      "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
-        jdbcTemplate.update(sql, tenantA, userA, "Memory for Tenant A", "EPISODIC", UUID.randomUUID(), UUID.randomUUID(), "text-embedding-3-small", 1536, 0.8, 0, Instant.now(), 1, false, Instant.now(), Instant.now());
+        jdbcTemplate.update(sql, tenantA, userA, "Memory for Tenant A", "EPISODIC", UUID.randomUUID(), UUID.randomUUID(), "text-embedding-3-small", 1536, 0.8, 0, java.sql.Timestamp.from(Instant.now()), 1, false, java.sql.Timestamp.from(Instant.now()), java.sql.Timestamp.from(Instant.now()));
 
         // 2. Create data for Tenant B using JdbcTemplate
         TenantContext.set(tenantB, userB);
-        jdbcTemplate.update(sql, tenantB, userB, "Memory for Tenant B", "EPISODIC", UUID.randomUUID(), UUID.randomUUID(), "text-embedding-3-small", 1536, 0.8, 0, Instant.now(), 1, false, Instant.now(), Instant.now());
+        jdbcTemplate.update(sql, tenantB, userB, "Memory for Tenant B", "EPISODIC", UUID.randomUUID(), UUID.randomUUID(), "text-embedding-3-small", 1536, 0.8, 0, java.sql.Timestamp.from(Instant.now()), 1, false, java.sql.Timestamp.from(Instant.now()), java.sql.Timestamp.from(Instant.now()));
         
         entityManager.clear();
 
