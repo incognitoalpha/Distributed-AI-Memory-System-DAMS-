@@ -24,8 +24,11 @@ public class TenantRlsStatementInspector implements StatementInspector {
             UUID tenantId = TenantContext.getTenantId();
             log.trace("Injecting tenant context into SQL: tenantId={}", tenantId);
             
-            String lowerSql = sql.trim().toLowerCase();
-            if (lowerSql.startsWith("insert") || lowerSql.startsWith("update") || lowerSql.startsWith("delete")) {
+            // Check if it's a DML statement, ignoring potential comments and whitespace
+            // Regex matches optional whitespace/comments followed by INSERT, UPDATE, or DELETE
+            String cleanSql = sql.replaceAll("/\\*.*?\\*/", "").trim().toLowerCase();
+            
+            if (cleanSql.startsWith("insert") || cleanSql.startsWith("update") || cleanSql.startsWith("delete")) {
                 // Use a CTE for DML to ensure JDBC executeUpdate returns the correct row count
                 // avoiding Hibernate StaleStateException.
                 return String.format("WITH rls_ctx AS (SELECT set_config('app.current_tenant_id', '%s', true)) %s",

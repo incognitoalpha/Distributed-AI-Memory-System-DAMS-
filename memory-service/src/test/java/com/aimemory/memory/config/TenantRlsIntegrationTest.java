@@ -4,6 +4,7 @@ import com.aimemory.memory.domain.Memory;
 import com.aimemory.memory.domain.enums.MemoryType;
 import com.aimemory.memory.repository.MemoryRepository;
 import com.aimemory.shared.domain.TenantContext;
+import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,6 +45,9 @@ public class TenantRlsIntegrationTest {
     @Autowired
     private org.springframework.jdbc.core.JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    private EntityManager entityManager;
+
     private UUID tenantA = UUID.randomUUID();
     private UUID tenantB = UUID.randomUUID();
     private UUID userA = UUID.randomUUID();
@@ -55,6 +59,7 @@ public class TenantRlsIntegrationTest {
         jdbcTemplate.execute("ALTER TABLE memories DISABLE ROW LEVEL SECURITY");
         memoryRepository.deleteAll();
         jdbcTemplate.execute("ALTER TABLE memories ENABLE ROW LEVEL SECURITY");
+        entityManager.clear();
     }
 
     @AfterEach
@@ -69,11 +74,13 @@ public class TenantRlsIntegrationTest {
         TenantContext.set(tenantA, userA);
         Memory memoryA = createMemory(tenantA, userA, "Memory for Tenant A");
         memoryRepository.saveAndFlush(memoryA);
+        entityManager.clear(); // Important: Clear context when switching tenants
 
         // 2. Create data for Tenant B while TenantContext is Tenant B
         TenantContext.set(tenantB, userB);
         Memory memoryB = createMemory(tenantB, userB, "Memory for Tenant B");
         memoryRepository.saveAndFlush(memoryB);
+        entityManager.clear(); // Important: Clear context when switching tenants
 
         // 3. Switch back to Tenant A and verify ONLY memoryA is visible
         TenantContext.set(tenantA, userA);
