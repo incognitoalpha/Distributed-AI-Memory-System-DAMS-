@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @since 1.0.0
  */
 @SpringBootApplication(scanBasePackages = "com.aimemory")
+@org.springframework.data.jpa.repository.config.EnableJpaAuditing
 public class MemoryServiceApplication {
 
     public static void main(String[] args) {
