@@ -1,5 +1,6 @@
 package com.aimemory.compliance.service;
 
+import io.micrometer.core.instrument.MeterRegistry;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -46,6 +47,9 @@ class ErasureIntegrationTest {
 
     @MockBean
     private JdbcTemplate jdbcTemplate; // Mock DB to avoid needing Postgres for this Kafka test
+
+    @MockBean
+    private MeterRegistry meterRegistry;
 
     @Test
     void initiateErasure_publishesAllRequiredEvents() {
