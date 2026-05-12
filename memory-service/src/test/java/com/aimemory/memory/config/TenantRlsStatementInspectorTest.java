@@ -18,7 +18,7 @@ class TenantRlsStatementInspectorTest {
     }
 
     @Test
-    void inspect_addsTenantIdWhenContextIsSet() {
+    void inspect_addsTenantIdWhenContextIsSetForSelect() {
         // Arrange
         UUID tenantId = UUID.randomUUID();
         UUID userId = UUID.randomUUID();
@@ -30,6 +30,22 @@ class TenantRlsStatementInspectorTest {
 
         // Assert
         assertThat(result).contains("SET LOCAL app.current_tenant_id = '" + tenantId + "'");
+        assertThat(result).contains(sql);
+    }
+    
+    @Test
+    void inspect_addsTenantIdWhenContextIsSetForInsert() {
+        // Arrange
+        UUID tenantId = UUID.randomUUID();
+        UUID userId = UUID.randomUUID();
+        TenantContext.set(tenantId, userId);
+        String sql = "INSERT INTO memories (content) VALUES ('test')";
+
+        // Act
+        String result = inspector.inspect(sql);
+
+        // Assert
+        assertThat(result).startsWith("WITH rls_ctx AS (SELECT set_config('app.current_tenant_id', '" + tenantId + "', true))");
         assertThat(result).contains(sql);
     }
 

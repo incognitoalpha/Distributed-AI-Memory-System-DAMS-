@@ -24,6 +24,14 @@ public class TenantRlsStatementInspector implements StatementInspector {
             UUID tenantId = TenantContext.getTenantId();
             log.trace("Injecting tenant context into SQL: tenantId={}", tenantId);
             
+            String lowerSql = sql.trim().toLowerCase();
+            if (lowerSql.startsWith("insert") || lowerSql.startsWith("update") || lowerSql.startsWith("delete")) {
+                // Use a CTE for DML to ensure JDBC executeUpdate returns the correct row count
+                // avoiding Hibernate StaleStateException.
+                return String.format("WITH rls_ctx AS (SELECT set_config('app.current_tenant_id', '%s', true)) %s",
+                        tenantId.toString(), sql);
+            }
+            
             // PostgreSQL session variable prefix
             // We use 'SET LOCAL' so it only applies to the current transaction
             return String.format("SET LOCAL app.current_tenant_id = '%s'; %s", 
