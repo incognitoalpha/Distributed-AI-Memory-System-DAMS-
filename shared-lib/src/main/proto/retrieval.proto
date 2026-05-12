@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package com.aimemory.shared.proto;
+
+option java_multiple_files = true;
+option java_package = "com.aimemory.shared.proto";
+
+service RetrievalService {
+    rpc Retrieve(RetrievalRequest) returns (RetrievalResponse);
+    rpc RetrieveStream(RetrievalRequest) returns (stream MemoryResult);
+}
+
+message RetrievalRequest {
+    string query = 1;
+    string tenant_id = 2;
+    string user_id = 3;
+    int32 token_budget = 4;
+    string trace_id = 5;
+}
+
+message RetrievalResponse {
+    repeated MemoryResult memories = 1;
+    int32 total_tokens_used = 2;
+    string trace_id = 3;
+    bool cache_hit = 4;
+}
+
+message MemoryResult {
+    string memory_id = 1;
+    string content = 2;
+    double score = 3;
+    string memory_type = 4;
+    string source_conversation_id = 5;
+    int32 version = 6;
+    double importance_score = 7;
+}
+
+message CacheInvalidationRequest {
+    string tenant_id = 1;
+    string user_id = 2;
+    string memory_id = 3;
+}
+
+message CacheInvalidationResponse {
+    bool success = 1;
+    string message = 2;
+}

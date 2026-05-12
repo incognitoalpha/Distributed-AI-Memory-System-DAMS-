@@ -1,0 +1,165 @@
+[versions]
+java = "21"
+spring-boot = "3.3.0"
+spring-cloud = "2023.0.1"
+gradle = "8.7"
+idea = "8.7"
+
+# Core libraries
+jackson = "2.17.1"
+lombok = "1.18.32"
+slf4j = "2.0.13"
+logback = "1.5.6"
+
+# Database
+postgresql = "42.7.3"
+flyway = "10.13.0"
+jpa = "6.4.3"
+
+# Kafka
+kafka = "3.6.2"
+schema-registry = "7.6.0"
+
+# Redis
+redis = "3.2.0"
+lettuce = "6.3.2.RELEASE"
+
+# gRPC
+grpc = "2.15.0"
+
+# Security
+spring-security = "6.3.1"
+jjwt = "0.12.5"
+
+# Observability
+micrometer = "1.13.1"
+opentelemetry = "1.36.0"
+prometheus = "1.12.2"
+
+# Testing
+junit = "5.10.2"
+mockito = "5.11.0"
+testcontainers = "3.3.1"
+
+# Code quality
+checkstyle = "10.17.0"
+spotbugs = "4.8.6"
+jacoco = "0.8.12"
+
+# LangChain
+langchain4j = "0.31.0"
+
+# Spring Batch
+spring-batch = "5.1.1"
+
+[libraries]
+# Spring Boot
+spring-boot-starter-web = { group = "org.springframework.boot", name = "spring-boot-starter-web" }
+spring-boot-starter-data-jpa = { group = "org.springframework.boot", name = "spring-boot-starter-data-jpa" }
+spring-boot-starter-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" }
+spring-boot-starter-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator" }
+spring-boot-starter-security = { group = "org.springframework.boot", name = "spring-boot-starter-security" }
+spring-boot-starter-aop = { group = "org.springframework.boot", name = "spring-boot-starter-aop" }
+spring-boot-starter-cache = { group = "org.springframework.boot", name = "spring-boot-starter-cache" }
+
+# Spring Cloud
+spring-cloud-starter-gateway = { group = "org.springframework.cloud", name = "spring-cloud-starter-gateway" }
+spring-cloud-starter-loadbalancer = { group = "org.springframework.cloud", name = "spring-cloud-starter-loadbalancer" }
+
+# Database
+postgresql = { group = "org.postgresql", name = "postgresql", version.ref = "postgresql" }
+flyway-core = { group = "org.flywaydb", name = "flyway-core", version.ref = "flyway" }
+flyway-database-postgresql = { group = "org.flywaydb", name = "flyway-database-postgresql", version.ref = "flyway" }
+hibernate-core = { group = "org.hibernate.orm", name = "hibernate-core", version.ref = "jpa" }
+hibernate-types-62 = { group = "io.hypersistence", name = "hypersistence-utils-hibernate-63", version = "3.9.0" }
+
+# Kafka
+spring-kafka = { group = "org.springframework.kafka", name = "spring-kafka" }
+kafka-clients = { group = "org.apache.kafka", name = "kafka-clients", version.ref = "kafka" }
+kafka-schema-registry-client = { group = "io.confluent", name = "kafka-schema-registry-client", version.ref = "schema-registry" }
+
+# Redis
+spring-data-redis = { group = "org.springframework.boot", name = "spring-boot-starter-data-redis" }
+lettuce-core = { group = "io.lettuce", name = "lettuce-core", version.ref = "lettuce" }
+
+# gRPC
+grpc-spring-boot-starter = { group = "net.devh", name = "grpc-spring-boot-starter", version.ref = "grpc" }
+grpc-protobuf = { group = "net.devh", name = "grpc-client-spring-boot-starter", version.ref = "grpc" }
+
+# Security
+jjwt-api = { group = "io.jsonwebtoken", name = "jjwt-api", version.ref = "jjwt" }
+jjwt-impl = { group = "io.jsonwebtoken", name = "jjwt-impl", version.ref = "jjwt" }
+jjwt-jackson = { group = "io.jsonwebtoken", name = "jjwt-jackson", version.ref = "jjwt" }
+
+# Observability
+micrometer-registry-prometheus = { group = "io.micrometer", name = "micrometer-registry-prometheus", version.ref = "micrometer" }
+opentelemetry-api = { group = "io.opentelemetry", name = "opentelemetry-api", version.ref = "opentelemetry" }
+opentelemetry-sdk = { group = "io.opentelemetry", name = "opentelemetry-sdk", version.ref = "opentelemetry" }
+opentelemetry-exporter-otlp = { group = "io.opentelemetry", name = "opentelemetry-exporter-otlp", version.ref = "opentelemetry" }
+opentelemetry-exporter-jaeger = { group = "io.opentelemetry", name = "opentelemetry-exporter-jaeger", version.ref = "opentelemetry" }
+
+# JSON
+jackson-databind = { group = "com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jackson" }
+jackson-datatype-jsr310 = { group = "com.fasterxml.jackson.datatype", name = "jackson-datatype-jsr310", version.ref = "jackson" }
+
+# LangChain4j
+langchain4j-open-ai = { group = "dev.langchain4j", name = "langchain4j-open-ai", version.ref = "langchain4j" }
+langchain4j-service = { group = "dev.langchain4j", name = "langchain4j-service", version.ref = "langchain4j" }
+
+# Spring Batch
+spring-batch-core = { group = "org.springframework.batch", name = "spring-batch-core", version.ref = "spring-batch" }
+
+# Testing
+junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+mockito-junit = { group = "org.mockito", name = "mockito-junit-jupiter", version.ref = "mockito" }
+testcontainers = { group = "org.testcontainers", name = "testcontainers", version.ref = "testcontainers" }
+testcontainers-junit = { group = "org.testcontainers", name = "junit-jupiter", version.ref = "testcontainers" }
+testcontainers-kafka = { group = "org.testcontainers", name = "kafka", version.ref = "testcontainers" }
+testcontainers-postgres = { group = "org.testcontainers", name = "postgresql", version.ref = "testcontainers" }
+
+# Code Quality
+checkstyle = { group = "com.puppycrawl.tools", name = "checkstyle", version.ref = "checkstyle" }
+spotbugs-annotations = { group = "com.github.spotbugs", name = "spotbugs-annotations", version.ref = "spotbugs" }
+
+# Utilities
+commons-lang3 = { group = "org.apache.commons", name = "commons-lang3", version = "3.14.0" }
+guava = { group = "com.google.guava", name = "guava", version = "33.2.1-jre" }
+resilience4j-spring6 = { group = "io.github.resilience4j", name = "resilience4j-spring-6", version = "2.2.0" }
+resilience4j-circuitbreaker = { group = "io.github.resilience4j", name = "resilience4j-circuitbreaker", version = "2.2.0" }
+
+[bundles]
+spring-boot-starter = [
+    "spring-boot-starter-web",
+    "spring-boot-starter-data-jpa",
+    "spring-boot-starter-validation",
+    "spring-boot-starter-actuator"
+]
+
+spring-boot-security = [
+    "spring-boot-starter-security",
+    "spring-boot-starter-aop"
+]
+
+observability = [
+    "micrometer-registry-prometheus",
+    "opentelemetry-api",
+    "opentelemetry-sdk"
+]
+
+testing = [
+    "junit-jupiter",
+    "mockito-core",
+    "mockito-junit",
+    "testcontainers",
+    "testcontainers-junit"
+]
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
+spring-cloud = { id = "org.springframework.cloud", version.ref = "spring-cloud" }
+java = { id = "java" }
+idea = { id = "idea", version.ref = "idea" }
+checkstyle = { id = "checkstyle", version.ref = "checkstyle" }
+spotbugs = { id = "com.github.spotbugs", version.ref = "spotbugs" }
+protobuf = { id = "com.google.protobuf", version = "0.9.4" }

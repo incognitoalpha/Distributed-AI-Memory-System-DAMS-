@@ -1,0 +1,74 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: embedding-service
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:aimemory}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+
+  batch:
+    jdbc:
+      initialize-schema: always
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+
+# Embedding model configuration
+embedding:
+  model:
+    name: text-embedding-3-small
+    version: v1
+    dimension: 1536
+
+# OpenAI configuration
+openai:
+  api:
+    key: ${OPENAI_API_KEY:}
+
+# Reindex configuration
+reindex:
+  chunk-size: 500
+
+# Resilience4j circuit breaker
+resilience4j:
+  circuitbreaker:
+    instances:
+      openai:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 30s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+
+logging:
+  level:
+    com.aimemory: DEBUG

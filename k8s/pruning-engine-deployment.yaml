@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pruning-engine
+  namespace: aimemory
+  labels:
+    app: pruning-engine
+    tier: core
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pruning-engine
+  template:
+    metadata:
+      labels:
+        app: pruning-engine
+        tier: core
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8088"
+        prometheus.io/path: "/actuator/prometheus"
+    spec:
+      containers:
+        - name: pruning-engine
+          image: aimemory/pruning-engine:latest
+          ports:
+            - containerPort: 8088
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "production"
+            - name: SERVER_PORT
+              value: "8088"
+          envFrom:
+            - configMapRef:
+                name: aimemory-config
+            - configMapRef:
+                name: aimemory-service-configs
+            - secretRef:
+                name: aimemory-secrets
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8088
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8088
+            initialDelaySeconds: 10
+            periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pruning-engine
+  namespace: aimemory
+spec:
+  selector:
+    app: pruning-engine
+  ports:
+    - port: 8088
+      targetPort: 8088
+      name: http
+  type: ClusterIP

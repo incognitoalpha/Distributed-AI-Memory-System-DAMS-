@@ -1,0 +1,33 @@
+# Build
+build/
+out/
+target/
+*.class
+
+# Gradle
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Env
+.env
+*.env.local
+
+# Docker
+docker-compose.override.yml

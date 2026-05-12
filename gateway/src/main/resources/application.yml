@@ -1,0 +1,68 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway
+  main:
+    web-application-type: reactive
+  cloud:
+    compatibility-verifier:
+      enabled: false
+    gateway:
+      grpc:
+        enabled: false
+      routes:
+        - id: auth-service
+          uri: http://127.0.0.1:8081
+          predicates:
+            - Path=/auth/**
+        - id: memory-service
+          uri: http://127.0.0.1:8082
+          predicates:
+            - Path=/api/v1/memories/**
+        - id: retrieval-service
+          uri: http://127.0.0.1:8083
+          predicates:
+            - Path=/api/v1/retrieval/**
+        - id: embedding-service
+          uri: http://127.0.0.1:8084
+          predicates:
+            - Path=/api/v1/embedding/**
+        - id: compliance-service
+          uri: http://127.0.0.1:8085
+          predicates:
+            - Path=/api/v1/gdpr/**
+        - id: agent-service
+          uri: http://127.0.0.1:8086
+          predicates:
+            - Path=/api/v1/agent/**
+
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6379}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+# JWT Configuration - must match auth-service
+jwt:
+  secret: ${JWT_SECRET:this-is-a-32-character-secret-key!!}
+
+# Rate limiting
+rate-limit:
+  requests-per-second: 100
+  burst-capacity: 150
+
+logging:
+  level:
+    com.aimemory: DEBUG
+    org.springframework.cloud.gateway: DEBUG

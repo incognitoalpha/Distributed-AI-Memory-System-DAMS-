@@ -1,0 +1,81 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: retrieval-service
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:aimemory}?options=-c%20timezone=UTC
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+
+grpc:
+  server:
+    port: 9090
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+# OpenTelemetry Configuration
+otel:
+  exporter:
+    otlp:
+      endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:http://jaeger-collector.aimemory-infra.svc.cluster.local:4317}
+      protocol: grpc
+  service:
+    name: retrieval-service
+  traces:
+    sampler:
+      probability: 1.0
+
+# Weaviate configuration
+weaviate:
+  host: ${WEAVIATE_HOST:localhost}
+  port: ${WEAVIATE_PORT:8080}
+
+# OpenSearch configuration
+opensearch:
+  host: ${OPENSEARCH_HOST:localhost}
+  port: ${OPENSEARCH_PORT:9200}
+
+# Retrieval configuration
+retrieval:
+  pipeline:
+    initial-candidate-limit: 50
+    final-context-limit: 10
+  cache:
+    ttl-seconds: 60
+
+logging:
+  level:
+    com.aimemory: DEBUG

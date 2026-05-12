@@ -1,0 +1,51 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: agent-service
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:aimemory}?options=-c%20timezone=UTC
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+grpc:
+  client:
+    retrieval-service:
+      address: static://localhost:9090
+      negotiationType: PLAINTEXT
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+
+# LLM configuration
+llm:
+  provider: openai
+  model: gpt-4
+  temperature: 0.7
+  timeout-seconds: 30
+
+# Token budget configuration
+token:
+  budget:
+    default: 4000
+    max-context: 4096
+
+logging:
+  level:
+    com.aimemory: DEBUG

@@ -1,0 +1,40 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: pruning-engine
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:aimemory}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+
+# Pruning configuration
+pruning:
+  importance-threshold: 0.15
+  inactivity-days: 90
+  hold-days: 30
+  cron:
+    schedule: "0 0 2 * * ?"  # Daily at 02:00 UTC
+
+logging:
+  level:
+    com.aimemory: DEBUG

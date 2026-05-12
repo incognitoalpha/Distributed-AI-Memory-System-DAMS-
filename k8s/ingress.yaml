@@ -1,0 +1,57 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aimemory-ingress
+  namespace: aimemory
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+    - hosts:
+        - api.aimemory.example.com
+      secretName: aimemory-tls
+  rules:
+    - host: api.aimemory.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gateway
+                port:
+                  number: 80
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: aimemory-sa
+  namespace: aimemory
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: aimemory-pod-reader
+  namespace: aimemory
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "services", "configmaps"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: aimemory-pod-reader-binding
+  namespace: aimemory
+subjects:
+  - kind: ServiceAccount
+    name: aimemory-sa
+    namespace: aimemory
+roleRef:
+  kind: Role
+  name: aimemory-pod-reader
+  apiGroup: rbac.authorization.k8s.io

@@ -1,0 +1,103 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: aimemory-infra
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 15s
+      external_labels:
+        cluster: 'aimemory'
+        environment: 'production'
+
+    alerting:
+      alertmanagers:
+        - static_configs:
+            - targets:
+                - 'alertmanager.aimemory-infra.svc.cluster.local:9093'
+
+    rule_files:
+      - '/etc/prometheus/rules/*.yml'
+
+    scrape_configs:
+      # Kubernetes API server
+      - job_name: 'kubernetes-apiserver'
+        kubernetes_sd_configs:
+          - role: endpoints
+        scheme: https
+        tls_config:
+          ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+
+      # Kubernetes nodes
+      - job_name: 'kubernetes-nodes'
+        kubernetes_sd_configs:
+          - role: node
+
+      # Core services
+      - job_name: 'aimemory-services'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespace: aimemory
+        relabel_configs:
+          - action: keep
+            regex: true
+            source_labels:
+              - __meta_kubernetes_pod_annotation_prometheus_io_scrape
+          - action: replace
+            regex: ([^:]+)(?::\d+)?
+            replacement: $1
+            source_labels:
+              - __meta_kubernetes_pod_annotation_prometheus_io_port
+            target_label: __address__
+          - action: labelmap
+            regex: __meta_kubernetes_pod_label_(.+)
+            source_labels:
+              - __meta_kubernetes_pod_label_app
+
+      # Redis
+      - job_name: 'redis'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names:
+                - aimemory-infra
+        relabel_configs:
+          - action: keep
+            regex: redis
+            source_labels:
+              - __meta_kubernetes_pod_label_app
+
+      # Kafka
+      - job_name: 'kafka'
+        kubernetes_sd_configs:
+          - role: endpoints
+            namespaces:
+              names:
+                - aimemory-infra
+        relabel_configs:
+          - action: keep
+            regex: kafka
+            source_labels:
+              - __meta_kubernetes_pod_label_app
+
+    # Recording rules for common queries
+    recording_rules:
+      - name: 'service-latency'
+        rules:
+          - expr: histogram_quantile(0.99, sum(rate(http_server_requests_seconds_bucket{service=~".*"}[5m])) by (le, service))
+            record: service:latency_p99
+          - expr: histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket{service=~".*"}[5m])) by (le, service))
+            record: service:latency_p95
+
+      - name: 'service-throughput'
+        rules:
+          - expr: sum(rate(http_server_requests_seconds_count{service=~".*"}[5m])) by (service)
+            record: service:requests_per_second
+
+      - name: 'memory-usage'
+        rules:
+          - expr: container_memory_usage_bytes{pod=~"aimemory-.*"}
+            record: pod:memory_usage_bytes

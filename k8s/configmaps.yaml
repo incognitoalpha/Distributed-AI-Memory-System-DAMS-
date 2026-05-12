@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aimemory-config
+  namespace: aimemory
+data:
+  # Database configuration
+  DB_HOST: "postgres.aimemory-infra.svc.cluster.local"
+  DB_PORT: "5432"
+  DB_NAME: "aimemory"
+
+  # Redis configuration
+  REDIS_HOST: "redis.aimemory-infra.svc.cluster.local"
+  REDIS_PORT: "6379"
+
+  # Kafka configuration
+  KAFKA_BOOTSTRAP_SERVERS: "kafka.aimemory-infra.svc.cluster.local:9092"
+
+  # Weaviate configuration
+  WEAVIATE_URL: "http://weaviate.aimemory-infra.svc.cluster.local:8080"
+
+  # OpenSearch configuration
+  OPENSEARCH_URL: "http://opensearch.aimemory-infra.svc.cluster.local:9200"
+
+  # JWT configuration
+  JWT_SECRET: "${JWT_SECRET}"
+  JWT_EXPIRATION_MS: "86400000"
+
+  # OpenAI configuration
+  OPENAI_API_KEY: "${OPENAI_API_KEY}"
+  EMBEDDING_MODEL_NAME: "text-embedding-3-small"
+  EMBEDDING_MODEL_DIMENSION: "1536"
+
+  # Application settings
+  APP_ENV: "production"
+  LOG_LEVEL: "INFO"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aimemory-service-configs
+  namespace: aimemory
+data:
+  GATEWAY_PORT: "8080"
+  AUTH_SERVICE_PORT: "8081"
+  MEMORY_SERVICE_PORT: "8082"
+  RETRIEVAL_SERVICE_PORT: "8083"
+  EMBEDDING_SERVICE_PORT: "8084"
+  COMPLIANCE_SERVICE_PORT: "8085"
+  AGENT_SERVICE_PORT: "8086"
+  RANKING_ENGINE_PORT: "8087"
+  PRUNING_ENGINE_PORT: "8088"
+
+  # Rate limiting
+  RATE_LIMIT_REQUESTS_PER_MINUTE: "1000"
+  RATE_LIMIT_BURST: "100"
+
+  # Retrieval settings
+  RETRIEVAL_TIMEOUT_MS: "400"
+  RETRIEVAL_CACHE_TTL_SECONDS: "300"
+  RETRIEVAL_MAX_RESULTS: "50"
+
+  # Pruning settings
+  PRUNING_CRON: "0 0 * * * *"
+  SOFT_DELETE_RETENTION_DAYS: "30"
+  HARD_DELETE_RETENTION_DAYS: "90"
