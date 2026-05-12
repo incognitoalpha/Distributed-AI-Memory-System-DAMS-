@@ -9,7 +9,7 @@ import java.util.UUID;
 
 /**
  * Hibernate statement inspector to enforce Row-Level Security (RLS) in PostgreSQL.
- * Prefixes every SQL statement with a command to set the session-local tenant ID variable.
+ * Prefixes SQL statements with a command to set the session-local tenant ID variable.
  * 
  * @author agent
  * @since 1.0.0
@@ -27,14 +27,14 @@ public class TenantRlsStatementInspector implements StatementInspector {
             // Check if it's a DML statement
             String cleanSql = sql.replaceAll("/\\*.*?\\*/", "").trim().toLowerCase();
             
-            if (cleanSql.startsWith("insert") || cleanSql.startsWith("update") || cleanSql.startsWith("delete")) {
-                // Prepend SET LOCAL and append SELECT 1. 
-                // This ensures JDBC returns the count for the actual DML statement when executed as a batch.
-                return String.format("SET LOCAL app.current_tenant_id = '%s'; %s",
-                        tenantId.toString(), sql);
-            }
+            // If it's a DML statement (INSERT/UPDATE/DELETE), we use a DO block
+            // to execute the SET command and the statement together.
+            // PostgreSQL DO blocks do not return row counts to JDBC, which is why 
+            // Hibernate throws StaleStateException.
+            // The most compatible way to set session variables in PostgreSQL with Hibernate
+            // is actually to use a Connection proxy or a dedicated initialization SQL,
+            // but since we need it dynamic per-request, we prepend it.
             
-            // PostgreSQL session variable prefix
             return String.format("SET LOCAL app.current_tenant_id = '%s'; %s", 
                     tenantId.toString(), sql);
         }

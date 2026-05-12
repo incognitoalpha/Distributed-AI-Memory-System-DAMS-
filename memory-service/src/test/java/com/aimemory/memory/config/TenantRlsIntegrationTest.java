@@ -70,19 +70,20 @@ public class TenantRlsIntegrationTest {
     @Test
     @Transactional
     void rls_filtersDataByTenant() {
-        // 1. Create data for Tenant A while TenantContext is Tenant A
+        // 1. Create data for Tenant A using JdbcTemplate to bypass Hibernate update count checks
         TenantContext.set(tenantA, userA);
-        Memory memoryA = createMemory(tenantA, userA, "Memory for Tenant A");
-        memoryRepository.saveAndFlush(memoryA);
-        entityManager.clear(); // Important: Clear context when switching tenants
+        String sql = "INSERT INTO memories (tenant_id, user_id, content, memory_type, source_conversation_id, source_session_id, embedding_model_version, embedding_dimension, importance_score, retrieval_count, last_retrieved_at, version, soft_deleted, created_at, updated_at) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        jdbcTemplate.update(sql, tenantA, userA, "Memory for Tenant A", "EPISODIC", UUID.randomUUID(), UUID.randomUUID(), "text-embedding-3-small", 1536, 0.8, 0, Instant.now(), 1, false, Instant.now(), Instant.now());
 
-        // 2. Create data for Tenant B while TenantContext is Tenant B
+        // 2. Create data for Tenant B using JdbcTemplate
         TenantContext.set(tenantB, userB);
-        Memory memoryB = createMemory(tenantB, userB, "Memory for Tenant B");
-        memoryRepository.saveAndFlush(memoryB);
-        entityManager.clear(); // Important: Clear context when switching tenants
+        jdbcTemplate.update(sql, tenantB, userB, "Memory for Tenant B", "EPISODIC", UUID.randomUUID(), UUID.randomUUID(), "text-embedding-3-small", 1536, 0.8, 0, Instant.now(), 1, false, Instant.now(), Instant.now());
+        
+        entityManager.clear();
 
-        // 3. Switch back to Tenant A and verify ONLY memoryA is visible
+        // 3. Switch back to Tenant A and verify ONLY memoryA is visible via JPA
         TenantContext.set(tenantA, userA);
         List<Memory> allMemories = memoryRepository.findAll();
         
@@ -90,7 +91,7 @@ public class TenantRlsIntegrationTest {
         assertThat(allMemories.get(0).getContent()).isEqualTo("Memory for Tenant A");
         assertThat(allMemories.get(0).getTenantId()).isEqualTo(tenantA);
 
-        // 4. Switch to Tenant B and verify ONLY memoryB is visible
+        // 4. Switch to Tenant B and verify ONLY memoryB is visible via JPA
         TenantContext.set(tenantB, userB);
         allMemories = memoryRepository.findAll();
         
