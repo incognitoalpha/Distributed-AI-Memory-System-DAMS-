@@ -26,7 +26,9 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@SpringBootTest(properties = {
+    "spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration,org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration"
+})
 @Testcontainers
 @ActiveProfiles("test")
 class ErasureIntegrationTest {
