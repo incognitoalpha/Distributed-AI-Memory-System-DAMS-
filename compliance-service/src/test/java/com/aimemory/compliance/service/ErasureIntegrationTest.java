@@ -1,6 +1,7 @@
 package com.aimemory.compliance.service;
 
 import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -8,7 +9,9 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -34,6 +37,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("test")
 class ErasureIntegrationTest {
 
+    @TestConfiguration
+    static class MetricsConfig {
+        @Bean
+        public MeterRegistry meterRegistry() {
+            return new SimpleMeterRegistry();
+        }
+    }
+
     @Container
     static KafkaContainer kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.6.1"));
 
@@ -47,9 +58,6 @@ class ErasureIntegrationTest {
 
     @MockBean
     private JdbcTemplate jdbcTemplate; // Mock DB to avoid needing Postgres for this Kafka test
-
-    @MockBean
-    private MeterRegistry meterRegistry;
 
     @Test
     void initiateErasure_publishesAllRequiredEvents() {
