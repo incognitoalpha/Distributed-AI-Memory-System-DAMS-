@@ -24,19 +24,17 @@ public class TenantRlsStatementInspector implements StatementInspector {
             UUID tenantId = TenantContext.getTenantId();
             log.trace("Injecting tenant context into SQL: tenantId={}", tenantId);
             
-            // Check if it's a DML statement, ignoring potential comments and whitespace
-            // Regex matches optional whitespace/comments followed by INSERT, UPDATE, or DELETE
+            // Check if it's a DML statement
             String cleanSql = sql.replaceAll("/\\*.*?\\*/", "").trim().toLowerCase();
             
             if (cleanSql.startsWith("insert") || cleanSql.startsWith("update") || cleanSql.startsWith("delete")) {
-                // Use a CTE for DML to ensure JDBC executeUpdate returns the correct row count
-                // avoiding Hibernate StaleStateException.
-                return String.format("WITH rls_ctx AS (SELECT set_config('app.current_tenant_id', '%s', true)) %s",
+                // Prepend SET LOCAL and append SELECT 1. 
+                // This ensures JDBC returns the count for the actual DML statement when executed as a batch.
+                return String.format("SET LOCAL app.current_tenant_id = '%s'; %s",
                         tenantId.toString(), sql);
             }
             
             // PostgreSQL session variable prefix
-            // We use 'SET LOCAL' so it only applies to the current transaction
             return String.format("SET LOCAL app.current_tenant_id = '%s'; %s", 
                     tenantId.toString(), sql);
         }
