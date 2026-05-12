@@ -9,6 +9,8 @@ import com.aimemory.memory.kafka.MemoryEventPublisher;
 import com.aimemory.memory.repository.MemoryRepository;
 import com.aimemory.memory.repository.MemoryVersionRepository;
 import com.aimemory.shared.exception.MemoryNotFoundException;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,6 +41,8 @@ class MemoryWriteServiceTest {
     @Mock
     private ConflictResolutionService conflictResolutionService;
 
+    private MeterRegistry meterRegistry;
+
     private MemoryWriteService writeService;
 
     private UUID tenantId;
@@ -46,11 +50,13 @@ class MemoryWriteServiceTest {
 
     @BeforeEach
     void setUp() {
+        meterRegistry = new SimpleMeterRegistry();
         writeService = new MemoryWriteService(
                 memoryRepository,
                 memoryVersionRepository,
                 eventPublisher,
-                conflictResolutionService
+                conflictResolutionService,
+                meterRegistry
         );
         tenantId = UUID.randomUUID();
         userId = UUID.randomUUID();

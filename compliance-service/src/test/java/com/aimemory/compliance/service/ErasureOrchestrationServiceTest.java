@@ -1,5 +1,7 @@
 package com.aimemory.compliance.service;
 
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,11 +27,14 @@ class ErasureOrchestrationServiceTest {
     @Mock
     private JdbcTemplate jdbcTemplate;
 
+    private MeterRegistry meterRegistry;
+
     private ErasureOrchestrationService erasureService;
 
     @BeforeEach
     void setUp() {
-        erasureService = new ErasureOrchestrationService(kafkaTemplate, jdbcTemplate);
+        meterRegistry = new SimpleMeterRegistry();
+        erasureService = new ErasureOrchestrationService(kafkaTemplate, jdbcTemplate, meterRegistry);
 
         // Default: Kafka send succeeds
         when(kafkaTemplate.send(anyString(), anyString(), anyMap()))
