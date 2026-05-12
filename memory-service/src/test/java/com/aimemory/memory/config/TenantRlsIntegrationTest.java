@@ -41,6 +41,9 @@ public class TenantRlsIntegrationTest {
     @Autowired
     private MemoryRepository memoryRepository;
 
+    @Autowired
+    private org.springframework.jdbc.core.JdbcTemplate jdbcTemplate;
+
     private UUID tenantA = UUID.randomUUID();
     private UUID tenantB = UUID.randomUUID();
     private UUID userA = UUID.randomUUID();
@@ -48,7 +51,10 @@ public class TenantRlsIntegrationTest {
 
     @BeforeEach
     void setUp() {
+        // Bypass RLS for cleanup
+        jdbcTemplate.execute("ALTER TABLE memories DISABLE ROW LEVEL SECURITY");
         memoryRepository.deleteAll();
+        jdbcTemplate.execute("ALTER TABLE memories ENABLE ROW LEVEL SECURITY");
     }
 
     @AfterEach
@@ -62,12 +68,12 @@ public class TenantRlsIntegrationTest {
         // 1. Create data for Tenant A while TenantContext is Tenant A
         TenantContext.set(tenantA, userA);
         Memory memoryA = createMemory(tenantA, userA, "Memory for Tenant A");
-        memoryRepository.save(memoryA);
+        memoryRepository.saveAndFlush(memoryA);
 
         // 2. Create data for Tenant B while TenantContext is Tenant B
         TenantContext.set(tenantB, userB);
         Memory memoryB = createMemory(tenantB, userB, "Memory for Tenant B");
-        memoryRepository.save(memoryB);
+        memoryRepository.saveAndFlush(memoryB);
 
         // 3. Switch back to Tenant A and verify ONLY memoryA is visible
         TenantContext.set(tenantA, userA);
@@ -98,6 +104,8 @@ public class TenantRlsIntegrationTest {
         memory.setEmbeddingDimension(1536);
         memory.setImportanceScore(0.8);
         memory.setLastRetrievedAt(Instant.now());
+        memory.setVersion(1);
+        memory.setSoftDeleted(false);
         return memory;
     }
 }
