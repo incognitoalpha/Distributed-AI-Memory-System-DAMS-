@@ -29,24 +29,22 @@ public class TenantRlsAspect {
     private EntityManager entityManager;
 
     /**
-     * Intercepts any method in the repository package and executes the SET LOCAL command.
-     * This ensures that RLS is applied to every query executed within a repository.
+     * Intercepts any method on a Spring Data Repository and executes the SET LOCAL command.
+     * This ensures that RLS is applied to every query, including inherited methods
+     * like save(), findAll(), and findById().
      */
-    @Before("execution(* com.aimemory.memory.repository.*.*(..))")
+    @Before("this(org.springframework.data.repository.Repository)")
     public void setTenantContext() {
         if (TenantContext.isSet()) {
             String tenantId = TenantContext.getTenantId().toString();
             log.info("Enforcing RLS tenant context for repository: tenantId={}", tenantId);
             
-            // Use createNativeQuery to execute SET LOCAL. 
-            // This forces Hibernate to bind a connection to the current session 
-            // and ensures the setting is visible to all subsequent statements 
-            // in the same transaction.
             entityManager.createNativeQuery("SET LOCAL app.current_tenant_id = '" + tenantId + "'")
                          .executeUpdate();
         } else {
-            log.debug("No tenant context set, clearing RLS session variable.");
-            entityManager.createNativeQuery("SET LOCAL app.current_tenant_id = ''")
+            log.debug("No tenant context set, resetting RLS session variable to nil UUID.");
+            // Use the nil UUID to avoid casting errors while still ensuring no data is matched
+            entityManager.createNativeQuery("SET LOCAL app.current_tenant_id = '00000000-0000-0000-0000-000000000000'")
                          .executeUpdate();
         }
     }
