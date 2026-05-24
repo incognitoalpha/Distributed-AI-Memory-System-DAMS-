@@ -34,6 +34,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
       - name: Compile all services
         run: ./gradlew compileJava --no-daemon
 
@@ -73,7 +76,7 @@ jobs:
         uses: dependency-check/dependency-check-action@1.1.0
         with:
           project: 'distributed-ai-memory'
-          scanPath: '.'
+          path: '.'
           format: 'HTML'
           failOnCVSS: '7'
 
