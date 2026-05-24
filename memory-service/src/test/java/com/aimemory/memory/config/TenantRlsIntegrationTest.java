@@ -34,7 +34,10 @@ public class TenantRlsIntegrationTest {
 
     @DynamicPropertySource
     static void configureProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.url", postgres::getJdbcUrl);
+        // Enable multi-statement support for RLS StatementInspector by using simple query mode
+        String jdbcUrl = postgres.getJdbcUrl();
+        String separator = jdbcUrl.contains("?") ? "&" : "?";
+        registry.add("spring.datasource.url", () -> jdbcUrl + separator + "preferQueryMode=simple");
         registry.add("spring.datasource.username", postgres::getUsername);
         registry.add("spring.datasource.password", postgres::getPassword);
     }
@@ -55,10 +58,11 @@ public class TenantRlsIntegrationTest {
 
     @BeforeEach
     void setUp() {
-        // Bypass RLS for cleanup
+        // Bypass RLS for cleanup and ensure it's forced for testing
         jdbcTemplate.execute("ALTER TABLE memories DISABLE ROW LEVEL SECURITY");
         memoryRepository.deleteAll();
         jdbcTemplate.execute("ALTER TABLE memories ENABLE ROW LEVEL SECURITY");
+        jdbcTemplate.execute("ALTER TABLE memories FORCE ROW LEVEL SECURITY");
         entityManager.clear();
     }
 

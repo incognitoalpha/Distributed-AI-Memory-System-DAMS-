@@ -24,22 +24,13 @@ public class TenantRlsStatementInspector implements StatementInspector {
             UUID tenantId = TenantContext.getTenantId();
             log.trace("Injecting tenant context into SQL: tenantId={}", tenantId);
             
-            // Check if it's a DML statement
-            String cleanSql = sql.replaceAll("/\\*.*?\\*/", "").trim().toLowerCase();
-            
-            // If it's a DML statement (INSERT/UPDATE/DELETE), we use a DO block
-            // to execute the SET command and the statement together.
-            // PostgreSQL DO blocks do not return row counts to JDBC, which is why 
-            // Hibernate throws StaleStateException.
-            // The most compatible way to set session variables in PostgreSQL with Hibernate
-            // is actually to use a Connection proxy or a dedicated initialization SQL,
-            // but since we need it dynamic per-request, we prepend it.
-            
+            // Prepend SET LOCAL to set the session variable for RLS.
+            // This requires the JDBC driver to support multiple statements (e.g., preferQueryMode=simple for PostgreSQL).
             return String.format("SET LOCAL app.current_tenant_id = '%s'; %s", 
                     tenantId.toString(), sql);
         }
         
-        log.warn("Executing SQL without tenant context! This may fail if RLS is enabled on the table.");
+        log.warn("Executing SQL without tenant context! This may fail if RLS is enabled and forced on the table.");
         return sql;
     }
 }
