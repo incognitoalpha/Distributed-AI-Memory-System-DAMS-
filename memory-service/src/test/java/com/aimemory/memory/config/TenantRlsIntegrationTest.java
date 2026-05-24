@@ -34,10 +34,7 @@ public class TenantRlsIntegrationTest {
 
     @DynamicPropertySource
     static void configureProperties(DynamicPropertyRegistry registry) {
-        // Enable multi-statement support for RLS StatementInspector by using simple query mode
-        String jdbcUrl = postgres.getJdbcUrl();
-        String separator = jdbcUrl.contains("?") ? "&" : "?";
-        registry.add("spring.datasource.url", () -> jdbcUrl + separator + "preferQueryMode=simple");
+        registry.add("spring.datasource.url", postgres::getJdbcUrl);
         registry.add("spring.datasource.username", postgres::getUsername);
         registry.add("spring.datasource.password", postgres::getPassword);
     }

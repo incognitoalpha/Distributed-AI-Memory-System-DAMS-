@@ -6,7 +6,7 @@ spring:
     name: memory-service
 
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:aimemory}?options=-c%20timezone=UTC&preferQueryMode=simple
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:aimemory}?options=-c%20timezone=UTC
     username: ${DB_USERNAME:postgres}
     password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
@@ -21,8 +21,6 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-        session_factory:
-          statement_inspector: com.aimemory.memory.config.TenantRlsStatementInspector
 
   flyway:
     enabled: true
