@@ -72,18 +72,21 @@ public class TenantRlsIntegrationTest {
     @Transactional
     void rls_filtersDataByTenant() {
         // 1. Create and save data for Tenant A using Repository
-        // The TenantRlsAspect will handle setting the session variable
         TenantContext.set(tenantA, userA);
         Memory memoryA = createMemory(tenantA, userA, "Memory for Tenant A");
         memoryRepository.save(memoryA);
+        // Explicitly flush after each save because changing TenantContext mid-transaction 
+        // will cause Hibernate's auto-flush (triggered by the Aspect's native query)
+        // to use the NEW tenant context for OLD pending changes.
+        entityManager.flush();
 
         // 2. Create and save data for Tenant B using Repository
         TenantContext.set(tenantB, userB);
         Memory memoryB = createMemory(tenantB, userB, "Memory for Tenant B");
         memoryRepository.save(memoryB);
-        
-        // Flush and clear to ensure we are testing the DB filter, not Hibernate cache
         entityManager.flush();
+        
+        // Clear to ensure we are testing the DB filter, not Hibernate cache
         entityManager.clear();
 
         // 3. Switch back to Tenant A and verify ONLY memoryA is visible via JPA
