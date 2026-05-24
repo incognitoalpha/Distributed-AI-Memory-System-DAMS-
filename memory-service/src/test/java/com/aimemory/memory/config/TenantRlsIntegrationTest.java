@@ -89,9 +89,11 @@ public class TenantRlsIntegrationTest {
         // 3. Switch back to Tenant A and verify ONLY memoryA is visible via JPA
         TenantContext.set(tenantA, userA);
         List<Memory> allMemories = memoryRepository.findAll();
+        String dbTenantId = jdbcTemplate.queryForObject("SELECT current_setting('app.current_tenant_id', true)", String.class);
         
         assertThat(allMemories)
-            .as("Expected 1 memory for tenant A, but found " + allMemories.size() + ". Items: " + allMemories)
+            .as("Expected 1 memory for tenant A, but found " + allMemories.size() + 
+                ". DB app.current_tenant_id=" + dbTenantId + ". Items: " + allMemories)
             .hasSize(1);
         assertThat(allMemories.get(0).getContent()).isEqualTo("Memory for Tenant A");
         assertThat(allMemories.get(0).getTenantId()).isEqualTo(tenantA);
@@ -99,9 +101,11 @@ public class TenantRlsIntegrationTest {
         // 4. Switch to Tenant B and verify ONLY memoryB is visible via JPA
         TenantContext.set(tenantB, userB);
         allMemories = memoryRepository.findAll();
+        dbTenantId = jdbcTemplate.queryForObject("SELECT current_setting('app.current_tenant_id', true)", String.class);
         
         assertThat(allMemories)
-            .as("Expected 1 memory for tenant B, but found " + allMemories.size() + ". Items: " + allMemories)
+            .as("Expected 1 memory for tenant B, but found " + allMemories.size() + 
+                ". DB app.current_tenant_id=" + dbTenantId + ". Items: " + allMemories)
             .hasSize(1);
         assertThat(allMemories.get(0).getContent()).isEqualTo("Memory for Tenant B");
         assertThat(allMemories.get(0).getTenantId()).isEqualTo(tenantB);

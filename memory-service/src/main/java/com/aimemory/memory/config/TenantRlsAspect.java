@@ -36,19 +36,18 @@ public class TenantRlsAspect {
     public void setTenantContext() {
         if (TenantContext.isSet()) {
             String tenantId = TenantContext.getTenantId().toString();
-            log.trace("Enforcing RLS tenant context for repository: tenantId={}", tenantId);
+            log.info("Enforcing RLS tenant context for repository: tenantId={}", tenantId);
             
-            // Execute SET LOCAL on the current connection using Hibernate's doWork.
-            // Executing this as a separate statement ensures Hibernate's row count
-            // checks for inserts/updates remain accurate.
-            Session session = entityManager.unwrap(Session.class);
-            session.doWork(connection -> {
-                try (Statement statement = connection.createStatement()) {
-                    statement.execute("SET LOCAL app.current_tenant_id = '" + tenantId + "'");
-                }
-            });
+            // Use createNativeQuery to execute SET LOCAL. 
+            // This forces Hibernate to bind a connection to the current session 
+            // and ensures the setting is visible to all subsequent statements 
+            // in the same transaction.
+            entityManager.createNativeQuery("SET LOCAL app.current_tenant_id = '" + tenantId + "'")
+                         .executeUpdate();
         } else {
-            log.warn("Executing repository method without tenant context! If RLS is forced, this may fail.");
+            log.debug("No tenant context set, clearing RLS session variable.");
+            entityManager.createNativeQuery("SET LOCAL app.current_tenant_id = ''")
+                         .executeUpdate();
         }
     }
 }
