@@ -28,12 +28,14 @@ public class TenantRlsAspect {
     @PersistenceContext
     private EntityManager entityManager;
 
+    public TenantRlsAspect() {
+        System.out.println("DEBUG: TenantRlsAspect bean created!");
+    }
+
     /**
-     * Intercepts any method in the repository package and executes the SET LOCAL command.
-     * This ensures that RLS is applied to every query, including inherited methods
-     * like save(), findAll(), and findById().
+     * Intercepts any method on a Spring Data Repository.
      */
-    @Before("execution(* com.aimemory.memory.repository..*.*(..))")
+    @Before("execution(* org.springframework.data.repository.Repository+.*(..))")
     public void setTenantContext() {
         if (TenantContext.isSet()) {
             String tenantId = TenantContext.getTenantId().toString();
