@@ -71,25 +71,25 @@ public class TenantRlsIntegrationTest {
     @Test
     @Transactional
     void rls_filtersDataByTenant() {
-        // 1. Create and save data for Tenant A using Repository
+        // 1. Create and save data for Tenant A manually to bypass proxy issues during setup
         TenantContext.set(tenantA, userA);
+        entityManager.createNativeQuery("SET LOCAL app.current_tenant_id = '" + tenantA + "'").executeUpdate();
         Memory memoryA = createMemory(tenantA, userA, "Memory for Tenant A");
-        memoryRepository.save(memoryA);
-        // Explicitly flush after each save because changing TenantContext mid-transaction 
-        // will cause Hibernate's auto-flush (triggered by the Aspect's native query)
-        // to use the NEW tenant context for OLD pending changes.
+        entityManager.persist(memoryA);
         entityManager.flush();
 
-        // 2. Create and save data for Tenant B using Repository
+        // 2. Create and save data for Tenant B manually
         TenantContext.set(tenantB, userB);
+        entityManager.createNativeQuery("SET LOCAL app.current_tenant_id = '" + tenantB + "'").executeUpdate();
         Memory memoryB = createMemory(tenantB, userB, "Memory for Tenant B");
-        memoryRepository.save(memoryB);
+        entityManager.persist(memoryB);
         entityManager.flush();
         
         // Clear to ensure we are testing the DB filter, not Hibernate cache
         entityManager.clear();
 
         // 3. Switch back to Tenant A and verify ONLY memoryA is visible via JPA
+        // This call WILL go through the TenantRlsInterceptor
         TenantContext.set(tenantA, userA);
         List<Memory> allMemories = memoryRepository.findAll();
         String dbTenantId = jdbcTemplate.queryForObject("SELECT current_setting('app.current_tenant_id', true)", String.class);
