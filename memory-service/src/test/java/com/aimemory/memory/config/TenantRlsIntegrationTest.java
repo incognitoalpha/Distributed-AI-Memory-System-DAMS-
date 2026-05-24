@@ -71,24 +71,28 @@ public class TenantRlsIntegrationTest {
     @Test
     @Transactional
     void rls_filtersDataByTenant() {
-        // 1. Create data for Tenant A using JdbcTemplate to bypass Hibernate update count checks
+        // 1. Create and save data for Tenant A using Repository
+        // The TenantRlsAspect will handle setting the session variable
         TenantContext.set(tenantA, userA);
-        String sql = "INSERT INTO memories (tenant_id, user_id, content, memory_type, source_conversation_id, source_session_id, embedding_model_version, embedding_dimension, importance_score, retrieval_count, last_retrieved_at, version, soft_deleted, created_at, updated_at) " +
-                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        
-        jdbcTemplate.update(sql, tenantA, userA, "Memory for Tenant A", "EPISODIC", UUID.randomUUID(), UUID.randomUUID(), "text-embedding-3-small", 1536, 0.8, 0, java.sql.Timestamp.from(Instant.now()), 1, false, java.sql.Timestamp.from(Instant.now()), java.sql.Timestamp.from(Instant.now()));
+        Memory memoryA = createMemory(tenantA, userA, "Memory for Tenant A");
+        memoryRepository.save(memoryA);
 
-        // 2. Create data for Tenant B using JdbcTemplate
+        // 2. Create and save data for Tenant B using Repository
         TenantContext.set(tenantB, userB);
-        jdbcTemplate.update(sql, tenantB, userB, "Memory for Tenant B", "EPISODIC", UUID.randomUUID(), UUID.randomUUID(), "text-embedding-3-small", 1536, 0.8, 0, java.sql.Timestamp.from(Instant.now()), 1, false, java.sql.Timestamp.from(Instant.now()), java.sql.Timestamp.from(Instant.now()));
+        Memory memoryB = createMemory(tenantB, userB, "Memory for Tenant B");
+        memoryRepository.save(memoryB);
         
+        // Flush and clear to ensure we are testing the DB filter, not Hibernate cache
+        entityManager.flush();
         entityManager.clear();
 
         // 3. Switch back to Tenant A and verify ONLY memoryA is visible via JPA
         TenantContext.set(tenantA, userA);
         List<Memory> allMemories = memoryRepository.findAll();
         
-        assertThat(allMemories).hasSize(1);
+        assertThat(allMemories)
+            .as("Expected 1 memory for tenant A, but found " + allMemories.size() + ". Items: " + allMemories)
+            .hasSize(1);
         assertThat(allMemories.get(0).getContent()).isEqualTo("Memory for Tenant A");
         assertThat(allMemories.get(0).getTenantId()).isEqualTo(tenantA);
 
@@ -96,7 +100,9 @@ public class TenantRlsIntegrationTest {
         TenantContext.set(tenantB, userB);
         allMemories = memoryRepository.findAll();
         
-        assertThat(allMemories).hasSize(1);
+        assertThat(allMemories)
+            .as("Expected 1 memory for tenant B, but found " + allMemories.size() + ". Items: " + allMemories)
+            .hasSize(1);
         assertThat(allMemories.get(0).getContent()).isEqualTo("Memory for Tenant B");
         assertThat(allMemories.get(0).getTenantId()).isEqualTo(tenantB);
     }
