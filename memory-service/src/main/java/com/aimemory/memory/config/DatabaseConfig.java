@@ -55,11 +55,16 @@ public class DatabaseConfig {
         }
 
         private void setTenantContext(Connection connection) throws SQLException {
-            if (TenantContext.isSet()) {
-                String tenantId = TenantContext.getTenantId().toString();
-                try (Statement stmt = connection.createStatement()) {
-                    // Use SET LOCAL so it's scoped to the current transaction
-                    stmt.execute("SET LOCAL app.current_tenant_id = '" + tenantId + "'");
+            try (Statement stmt = connection.createStatement()) {
+                if (TenantContext.isSet()) {
+                    String tenantId = TenantContext.getTenantId().toString();
+                    // Use SET instead of SET LOCAL to ensure it sticks to the session
+                    // even if called outside a formal transaction block.
+                    // The value will be overwritten by the next getConnection() call.
+                    stmt.execute("SET app.current_tenant_id = '" + tenantId + "'");
+                } else {
+                    // Clear the setting if no tenant is contextually available
+                    stmt.execute("SET app.current_tenant_id = ''");
                 }
             }
         }

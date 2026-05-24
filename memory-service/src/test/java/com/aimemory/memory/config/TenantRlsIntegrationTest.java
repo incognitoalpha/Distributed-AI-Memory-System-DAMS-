@@ -69,7 +69,6 @@ public class TenantRlsIntegrationTest {
     }
 
     @Test
-    @Transactional
     void rls_filtersDataByTenant() {
         // 1. Create and save data for Tenant A using Repository
         // The TenantRlsAspect will handle setting the session variable
@@ -82,8 +81,7 @@ public class TenantRlsIntegrationTest {
         Memory memoryB = createMemory(tenantB, userB, "Memory for Tenant B");
         memoryRepository.save(memoryB);
         
-        // Flush and clear to ensure we are testing the DB filter, not Hibernate cache
-        entityManager.flush();
+        // Clear persistence context to ensure we are testing the DB filter, not Hibernate cache
         entityManager.clear();
 
         // 3. Switch back to Tenant A and verify ONLY memoryA is visible via JPA
