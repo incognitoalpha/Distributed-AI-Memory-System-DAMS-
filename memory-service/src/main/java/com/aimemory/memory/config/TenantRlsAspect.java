@@ -28,14 +28,19 @@ public class TenantRlsAspect {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @jakarta.annotation.PostConstruct
+    public void init() {
+        System.out.println("DEBUG: TenantRlsAspect @PostConstruct hit!");
+    }
+
     public TenantRlsAspect() {
-        System.out.println("DEBUG: TenantRlsAspect bean created!");
+        System.out.println("DEBUG: TenantRlsAspect constructor hit!");
     }
 
     /**
-     * Intercepts any method on a Spring Data Repository.
+     * Intercepts any method in the repository package.
      */
-    @Before("execution(* org.springframework.data.repository.Repository+.*(..))")
+    @Before("within(com.aimemory.memory.repository..*)")
     public void setTenantContext() {
         if (TenantContext.isSet()) {
             String tenantId = TenantContext.getTenantId().toString();
