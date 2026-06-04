@@ -73,14 +73,14 @@ public class TenantRlsIntegrationTest {
     void rls_filtersDataByTenant() {
         // 1. Create and save data for Tenant A manually to bypass proxy issues during setup
         TenantContext.set(tenantA, userA);
-        entityManager.createNativeQuery("SET LOCAL app.current_tenant_id = '" + tenantA + "'").executeUpdate();
+        jdbcTemplate.execute("SET app.current_tenant_id = '" + tenantA + "'");
         Memory memoryA = createMemory(tenantA, userA, "Memory for Tenant A");
         entityManager.persist(memoryA);
         entityManager.flush();
 
         // 2. Create and save data for Tenant B manually
         TenantContext.set(tenantB, userB);
-        entityManager.createNativeQuery("SET LOCAL app.current_tenant_id = '" + tenantB + "'").executeUpdate();
+        jdbcTemplate.execute("SET app.current_tenant_id = '" + tenantB + "'");
         Memory memoryB = createMemory(tenantB, userB, "Memory for Tenant B");
         entityManager.persist(memoryB);
         entityManager.flush();
