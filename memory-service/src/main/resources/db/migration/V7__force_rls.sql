@@ -8,7 +8,14 @@ ALTER TABLE memories FORCE ROW LEVEL SECURITY;
 ALTER TABLE memory_versions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE memory_versions FORCE ROW LEVEL SECURITY;
 CREATE POLICY tenant_isolation_versions ON memory_versions
-    USING (EXISTS (SELECT 1 FROM memories WHERE memories.memory_id = memory_versions.memory_id));
+    USING (
+        EXISTS (
+            SELECT 1
+            FROM memories
+            WHERE memories.memory_id = memory_versions.memory_id
+              AND memories.tenant_id = current_setting('app.current_tenant_id', true)::UUID
+        )
+    );
 
 -- memory_conflicts
 ALTER TABLE memory_conflicts ENABLE ROW LEVEL SECURITY;
