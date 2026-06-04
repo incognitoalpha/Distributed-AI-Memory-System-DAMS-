@@ -145,6 +145,7 @@ class MemoryWriteServiceTest {
 
         // Assert
         assertEquals(2, response.version());
+        assertNull(response.replacesMemoryId());
         verify(memoryVersionRepository).save(any(MemoryVersion.class));
         verify(eventPublisher).publishMemoryVersioned(any(Memory.class));
     }

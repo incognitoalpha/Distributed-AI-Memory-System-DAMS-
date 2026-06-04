@@ -1,8 +1,10 @@
 package com.aimemory.memory.service;
 
+import com.aimemory.memory.repository.MemoryRepository;
 import com.aimemory.memory.domain.MemoryVersion;
 import com.aimemory.memory.repository.MemoryVersionRepository;
 import com.aimemory.shared.exception.MemoryNotFoundException;
+import com.aimemory.shared.exception.TenantIsolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,9 +21,11 @@ import java.util.UUID;
 public class MemoryVersionService {
 
     private final MemoryVersionRepository versionRepository;
+    private final MemoryRepository memoryRepository;
 
-    public MemoryVersionService(MemoryVersionRepository versionRepository) {
+    public MemoryVersionService(MemoryVersionRepository versionRepository, MemoryRepository memoryRepository) {
         this.versionRepository = versionRepository;
+        this.memoryRepository = memoryRepository;
     }
 
     /**
@@ -34,14 +38,15 @@ public class MemoryVersionService {
      */
     @Transactional(readOnly = true)
     public List<MemoryVersion> getVersionHistory(UUID memoryId, UUID tenantId) {
+        if (!memoryRepository.belongsToTenant(memoryId, tenantId)) {
+            throw new TenantIsolationException("Tenant cannot access version history for memoryId: " + memoryId);
+        }
+
         List<MemoryVersion> versions = versionRepository.findByMemoryIdOrderByVersionAsc(memoryId);
 
         if (versions.isEmpty()) {
             throw new MemoryNotFoundException(memoryId, "Memory not found");
         }
-
-        // Verify tenant ownership via the first version
-        // Note: This is a simplified check; in production, you'd verify via the memory table
         return versions;
     }
 }

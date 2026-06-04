@@ -3,6 +3,7 @@ package com.aimemory.retrieval.pipeline;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Timer;
+import com.aimemory.shared.exception.RetrievalPipelineException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -117,13 +118,7 @@ public class RetrievalPipelineService {
         } catch (Exception e) {
             log.error("Retrieval pipeline failed: {}", e.getMessage(), e);
             missRateCounter.increment();
-            throw new RetrievalException("Pipeline failed: " + e.getMessage(), e);
-        }
-    }
-
-    public static class RetrievalException extends RuntimeException {
-        public RetrievalException(String message, Throwable cause) {
-            super(message, cause);
+            throw new RetrievalPipelineException("Pipeline failed: " + e.getMessage(), e);
         }
     }
 }

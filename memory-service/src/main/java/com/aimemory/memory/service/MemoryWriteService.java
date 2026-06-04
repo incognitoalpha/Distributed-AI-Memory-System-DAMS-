@@ -149,7 +149,7 @@ public class MemoryWriteService {
         // Update the memory
         existing.setContent(content);
         existing.setVersion(existing.getVersion() + 1);
-        existing.setReplacesMemoryId(memoryId);
+        existing.setReplacesMemoryId(null);
 
         Memory saved = memoryRepository.save(existing);
 

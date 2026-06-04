@@ -1,8 +1,10 @@
 package com.aimemory.memory.service;
 
 import com.aimemory.memory.domain.MemoryVersion;
+import com.aimemory.memory.repository.MemoryRepository;
 import com.aimemory.memory.repository.MemoryVersionRepository;
 import com.aimemory.shared.exception.MemoryNotFoundException;
+import com.aimemory.shared.exception.TenantIsolationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,11 +24,14 @@ class MemoryVersionServiceTest {
     @Mock
     private MemoryVersionRepository memoryVersionRepository;
 
+    @Mock
+    private MemoryRepository memoryRepository;
+
     private MemoryVersionService versionService;
 
     @BeforeEach
     void setUp() {
-        versionService = new MemoryVersionService(memoryVersionRepository);
+        versionService = new MemoryVersionService(memoryVersionRepository, memoryRepository);
     }
 
     @Test
@@ -48,7 +53,9 @@ class MemoryVersionServiceTest {
                 .thenReturn(List.of(v1, v2));
 
         // Act
-        List<MemoryVersion> versions = versionService.getVersionHistory(memoryId, UUID.randomUUID());
+        UUID tenantId = UUID.randomUUID();
+        when(memoryRepository.belongsToTenant(memoryId, tenantId)).thenReturn(true);
+        List<MemoryVersion> versions = versionService.getVersionHistory(memoryId, tenantId);
 
         // Assert
         assertEquals(2, versions.size());
@@ -60,26 +67,22 @@ class MemoryVersionServiceTest {
     void getVersionHistory_throwsWhenNoVersions() {
         // Arrange
         UUID memoryId = UUID.randomUUID();
-        when(memoryVersionRepository.findByMemoryIdOrderByVersionAsc(memoryId))
-                .thenReturn(List.of());
+        UUID tenantId = UUID.randomUUID();
+        when(memoryRepository.belongsToTenant(memoryId, tenantId)).thenReturn(true);
+        when(memoryVersionRepository.findByMemoryIdOrderByVersionAsc(memoryId)).thenReturn(List.of());
 
         // Act & Assert
         assertThrows(MemoryNotFoundException.class, () ->
-                versionService.getVersionHistory(memoryId, UUID.randomUUID())
+                versionService.getVersionHistory(memoryId, tenantId)
         );
     }
 
     @Test
-    void getVersionHistory_returnsEmptyListWhenNoVersions() {
-        // Arrange
+    void getVersionHistory_throwsWhenTenantMismatch() {
         UUID memoryId = UUID.randomUUID();
-        when(memoryVersionRepository.findByMemoryIdOrderByVersionAsc(memoryId))
-                .thenReturn(List.of());
+        UUID tenantId = UUID.randomUUID();
+        when(memoryRepository.belongsToTenant(memoryId, tenantId)).thenReturn(false);
 
-        // This test expects empty list, but implementation throws exception
-        // This test documents the current behavior
-        assertThrows(MemoryNotFoundException.class, () ->
-                versionService.getVersionHistory(memoryId, UUID.randomUUID())
-        );
+        assertThrows(TenantIsolationException.class, () -> versionService.getVersionHistory(memoryId, tenantId));
     }
 }

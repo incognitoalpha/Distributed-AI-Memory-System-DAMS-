@@ -1,0 +1,678 @@
+{
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\build.gradle.kts": {
+    "mtime": 1780550671.713862,
+    "hash": "1037089466f7bf4fdb6cf0df33f27944"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\debug_auth.ps1": {
+    "mtime": 1780550671.725224,
+    "hash": "602d29c5e2890fb29b33d6c3ced37edd"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\gradlew": {
+    "mtime": 1780550671.7579877,
+    "hash": "d71558d06a8c97628fdb0e38b0c36a2d"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\quick_test.ps1": {
+    "mtime": 1780550671.7965126,
+    "hash": "b60ebcaea15b2a461db4489c3b89db0a"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\settings.gradle.kts": {
+    "mtime": 1780550671.8163161,
+    "hash": "c59d289dbed7a9cb31fe556030edb639"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\start.ps1": {
+    "mtime": 1780550671.8261442,
+    "hash": "1b4fd4aa6c20ed59835adcc2a2189b99"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\test_api.ps1": {
+    "mtime": 1780550671.8261442,
+    "hash": "4eb7ec4165dc716ca0d8d404fec5c276"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\agent-service\\build.gradle.kts": {
+    "mtime": 1780550671.6967652,
+    "hash": "40ac17b09f9b948386244853e6cbeb37"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\agent-service\\src\\main\\java\\com\\aimemory\\agent\\AgentServiceApplication.java": {
+    "mtime": 1780550671.6977794,
+    "hash": "a8143d315a42867bd829b93c1b96055a"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\agent-service\\src\\main\\java\\com\\aimemory\\agent\\api\\AgentController.java": {
+    "mtime": 1780550671.6998777,
+    "hash": "c683eec215d1dcb5008116a9b1ed1a14"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\agent-service\\src\\main\\java\\com\\aimemory\\agent\\client\\RetrievalServiceGrpcClient.java": {
+    "mtime": 1780550671.6998777,
+    "hash": "0f8ee665356d53e69188efe9a846ffcf"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\agent-service\\src\\main\\java\\com\\aimemory\\agent\\service\\AgentOrchestrationService.java": {
+    "mtime": 1780550671.6998777,
+    "hash": "e14b9d9b54d8ff69b1766f70fcfe86cc"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\agent-service\\src\\main\\java\\com\\aimemory\\agent\\service\\ContextBuilderService.java": {
+    "mtime": 1780550671.7018888,
+    "hash": "38cb01f3708916acb5c90ea273d00b3f"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\agent-service\\src\\test\\java\\com\\aimemory\\agent\\client\\RetrievalServiceResilienceTest.java": {
+    "mtime": 1780550671.7018888,
+    "hash": "f60cb488a5f0f3d97af1f34576fd228d"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\agent-service\\src\\test\\java\\com\\aimemory\\agent\\service\\AgentOrchestrationServiceTest.java": {
+    "mtime": 1780550671.7018888,
+    "hash": "1b85907b1e9e20e33106a90fd97d3a3f"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\agent-service\\src\\test\\java\\com\\aimemory\\agent\\service\\ContextBuilderServiceTest.java": {
+    "mtime": 1780550671.7018888,
+    "hash": "e2fe8d1cf32abd929d62a0cd58855654"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\auth-service\\build.gradle.kts": {
+    "mtime": 1780550671.7054355,
+    "hash": "e5daf56807be565348e124e0a9cc4fbc"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\auth-service\\src\\main\\java\\com\\aimemory\\auth\\AuthServiceApplication.java": {
+    "mtime": 1780550671.7074437,
+    "hash": "4d8412e1e9d77c9b387bfebfc7e580cc"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\auth-service\\src\\main\\java\\com\\aimemory\\auth\\api\\AuthController.java": {
+    "mtime": 1780550671.7079506,
+    "hash": "040b39e0a51baa2f0f03eac05bf330af"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\auth-service\\src\\main\\java\\com\\aimemory\\auth\\config\\SecurityConfig.java": {
+    "mtime": 1780550671.708971,
+    "hash": "ee5398a1b5104975a790170c633b1b24"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\auth-service\\src\\main\\java\\com\\aimemory\\auth\\service\\TenantAclService.java": {
+    "mtime": 1780550671.7105942,
+    "hash": "3e16caad276bf2e5af984e12da221ef0"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\compliance-service\\build.gradle.kts": {
+    "mtime": 1780550671.713862,
+    "hash": "ba90a45723c88d0c20b71d8f888b02ae"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\compliance-service\\src\\main\\java\\com\\aimemory\\compliance\\ComplianceServiceApplication.java": {
+    "mtime": 1780550671.713862,
+    "hash": "4fe9123d36db5c2544c49695b6cb34da"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\compliance-service\\src\\main\\java\\com\\aimemory\\compliance\\api\\GdprController.java": {
+    "mtime": 1780550671.713862,
+    "hash": "37cffc1ca33e2ead80d876c7aaf76099"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\compliance-service\\src\\main\\java\\com\\aimemory\\compliance\\audit\\AuditLogConsumer.java": {
+    "mtime": 1780550671.713862,
+    "hash": "1683746f27fc958a94884f455c92839c"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\compliance-service\\src\\main\\java\\com\\aimemory\\compliance\\service\\DataExportService.java": {
+    "mtime": 1780550671.7179666,
+    "hash": "90f0638d3a2509920689c41e50a36fe7"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\compliance-service\\src\\main\\java\\com\\aimemory\\compliance\\service\\ErasureOrchestrationService.java": {
+    "mtime": 1780550671.7184782,
+    "hash": "f033efab3cab8c541299540fb5e61dac"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\compliance-service\\src\\test\\java\\com\\aimemory\\compliance\\service\\DataExportServiceTest.java": {
+    "mtime": 1780550671.7184782,
+    "hash": "10511f8f7a43df88abbba7cd02d05463"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\compliance-service\\src\\test\\java\\com\\aimemory\\compliance\\service\\ErasureIntegrationTest.java": {
+    "mtime": 1780550671.7184782,
+    "hash": "99ae89059f45a52ec140c38deb81634c"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\compliance-service\\src\\test\\java\\com\\aimemory\\compliance\\service\\ErasureOrchestrationServiceTest.java": {
+    "mtime": 1780550671.7184782,
+    "hash": "86317274cdbe0114594938fed46ab081"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\build.gradle.kts": {
+    "mtime": 1780550671.7300816,
+    "hash": "f3f3defd0cb61332a529623d20cfa7d8"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\src\\main\\java\\com\\aimemory\\embedding\\EmbeddingServiceApplication.java": {
+    "mtime": 1780550671.7300816,
+    "hash": "9d295264adac2588b9edeff12fd63d18"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\src\\main\\java\\com\\aimemory\\embedding\\api\\EmbeddingController.java": {
+    "mtime": 1780550671.7300816,
+    "hash": "97e2e4cd86783e7d1fa1bda612ea4990"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\src\\main\\java\\com\\aimemory\\embedding\\kafka\\EmbeddingEventPublisher.java": {
+    "mtime": 1780550671.7300816,
+    "hash": "9cba51c981243d33bd9841ef95c83e01"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\src\\main\\java\\com\\aimemory\\embedding\\kafka\\EmbeddingRequestConsumer.java": {
+    "mtime": 1780550671.7358122,
+    "hash": "4ca9af20b154d1d4af7fd41283129600"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\src\\main\\java\\com\\aimemory\\embedding\\reindex\\ReindexBatchJob.java": {
+    "mtime": 1780550671.7358122,
+    "hash": "21a0df9c47f62430dda4edf5f90fc1da"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\src\\main\\java\\com\\aimemory\\embedding\\reindex\\ReindexClientImpl.java": {
+    "mtime": 1780550671.7358122,
+    "hash": "a315daaabb61d202023c8bf9c7fabd2c"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\src\\main\\java\\com\\aimemory\\embedding\\service\\EmbeddingGenerationService.java": {
+    "mtime": 1780550671.7358122,
+    "hash": "ff0be68051ad3d1d9693f0922bac155d"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\src\\main\\java\\com\\aimemory\\embedding\\service\\ModelVersionRegistry.java": {
+    "mtime": 1780550671.7358122,
+    "hash": "7705b9e688beaeee9911ee4f8aa7038c"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\src\\test\\java\\com\\aimemory\\embedding\\kafka\\EmbeddingEventPublisherTest.java": {
+    "mtime": 1780550671.7414806,
+    "hash": "442b4e14c355b372114195c2cc26a52e"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\src\\test\\java\\com\\aimemory\\embedding\\kafka\\EmbeddingRequestConsumerTest.java": {
+    "mtime": 1780550671.7434914,
+    "hash": "22deaaa2f2eb6bda0f6728a83f326197"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\src\\test\\java\\com\\aimemory\\embedding\\service\\EmbeddingGenerationServiceTest.java": {
+    "mtime": 1780550671.7434914,
+    "hash": "3aa29ff6e07eeca3d80bc3cb4a0a4cd3"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\src\\test\\java\\com\\aimemory\\embedding\\service\\ModelVersionRegistryTest.java": {
+    "mtime": 1780550671.7434914,
+    "hash": "4ef7f25216c1124c66efef080e12da46"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\gateway\\build.gradle.kts": {
+    "mtime": 1780550671.7454987,
+    "hash": "b281c45ea26a18165c6199c44606517e"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\gateway\\src\\main\\java\\com\\aimemory\\gateway\\GatewayApplication.java": {
+    "mtime": 1780550671.747512,
+    "hash": "5f137db209308a07337ecdcff3ab6f4b"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\gateway\\src\\main\\java\\com\\aimemory\\gateway\\config\\RateLimitConfig.java": {
+    "mtime": 1780550671.747512,
+    "hash": "d69064dab3c8fed5a664f3ec243ea2a8"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\gateway\\src\\main\\java\\com\\aimemory\\gateway\\config\\SecurityConfig.java": {
+    "mtime": 1780550671.7495303,
+    "hash": "06cdb0eb4730be2359f5668eba88c077"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\gateway\\src\\main\\java\\com\\aimemory\\gateway\\filter\\JwtAuthFilter.java": {
+    "mtime": 1780550671.7495303,
+    "hash": "3c2d89626a0e272a0d6f7de683939c64"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\gateway\\src\\main\\java\\com\\aimemory\\gateway\\filter\\RateLimitFilter.java": {
+    "mtime": 1780550671.7495303,
+    "hash": "86b4d0ee8c8dc194e44b004defcd3733"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\gateway\\src\\main\\java\\com\\aimemory\\gateway\\filter\\TenantInjectionFilter.java": {
+    "mtime": 1780550671.751578,
+    "hash": "ed693f3159ca3a92ad0164ff1e6feb4c"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\gateway\\src\\test\\java\\com\\aimemory\\gateway\\filter\\JwtAuthFilterTest.java": {
+    "mtime": 1780550671.751578,
+    "hash": "8bb271610ba834b60da1c56a59649536"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\gateway\\src\\test\\java\\com\\aimemory\\gateway\\filter\\TenantInjectionFilterTest.java": {
+    "mtime": 1780550671.7549534,
+    "hash": "65774fe1a8ec424f0ca107d043d838cd"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\build.gradle.kts": {
+    "mtime": 1780550671.765596,
+    "hash": "c03e769f7ad64547de1b794f8df292a8"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\MemoryServiceApplication.java": {
+    "mtime": 1780550671.7676055,
+    "hash": "51e18539bfe1062fe8e6a94fa9aa8b81"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\api\\MemoryController.java": {
+    "mtime": 1780550671.7676055,
+    "hash": "7e57f56c3203ad634341925cdc68fb51"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\api\\dto\\MemoryConflictResponse.java": {
+    "mtime": 1780550671.7696137,
+    "hash": "2b1f4318bdb97fd338236282dcb3908f"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\api\\dto\\MemoryCreateRequest.java": {
+    "mtime": 1780550671.7696137,
+    "hash": "a5a51ce2209d08ee2adade6d0b824b6b"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\api\\dto\\MemoryResponse.java": {
+    "mtime": 1780550671.7701209,
+    "hash": "ec78dbbc316706d061987c67d12f8c3d"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\config\\DatabaseConfig.java": {
+    "mtime": 1780550671.7701209,
+    "hash": "aebdf63cabddf502036abdcb69232411"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\config\\SecurityConfig.java": {
+    "mtime": 1780550671.7701209,
+    "hash": "088d0acf85e30f779dbcfd8fbf48db46"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\config\\TenantRlsAdvisorConfig.java": {
+    "mtime": 1780550671.7721407,
+    "hash": "9abcb6fc3a124cfe31a53bb01f5ef16e"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\config\\TenantRlsInterceptor.java": {
+    "mtime": 1780550671.7721407,
+    "hash": "0cfc0961b2c69266b20d8eb2c84f9d2a"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\config\\TenantRlsStatementInspector.java": {
+    "mtime": 1780550671.7721407,
+    "hash": "e0ce0717e6229d126174766f03723c2f"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\domain\\Memory.java": {
+    "mtime": 1780550671.7721407,
+    "hash": "93a827524bffe087afe5b6cb08eeef94"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\domain\\MemoryConflict.java": {
+    "mtime": 1780550671.7721407,
+    "hash": "e508e09c6e4aa5d8786766f9c7d966b8"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\domain\\MemoryVersion.java": {
+    "mtime": 1780550671.7721407,
+    "hash": "2f2b1edebdac13f74d7ef36e1427f945"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\domain\\enums\\ConflictResolutionStrategy.java": {
+    "mtime": 1780550671.7741594,
+    "hash": "8ab2250d4efae3eee37bd342b0d7eefd"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\domain\\enums\\MemoryType.java": {
+    "mtime": 1780550671.7741594,
+    "hash": "c39906ebd20e2b79953304fa1544537c"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\kafka\\MemoryEventPublisher.java": {
+    "mtime": 1780550671.7741594,
+    "hash": "fb963be759ba870cb069245faa0cbde9"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\repository\\MemoryConflictRepository.java": {
+    "mtime": 1780550671.7741594,
+    "hash": "89797337efce69d4e9551fc2f99d36bf"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\repository\\MemoryRepository.java": {
+    "mtime": 1780550671.7741594,
+    "hash": "f46630f081baefd94c3d7975894b34c0"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\repository\\MemoryVersionRepository.java": {
+    "mtime": 1780550671.7774506,
+    "hash": "1059fc48aa27b35927d401a0aa275519"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\service\\ConflictResolutionService.java": {
+    "mtime": 1780550671.7774506,
+    "hash": "d79542acc1077ec79d8ab6e8f5498e69"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\service\\MemoryVersionService.java": {
+    "mtime": 1780550671.7789626,
+    "hash": "41b5caaf5bb7d47ea0aad05252f85cc9"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\java\\com\\aimemory\\memory\\service\\MemoryWriteService.java": {
+    "mtime": 1780550671.7789626,
+    "hash": "c8ab60c608f01cf4a72eee3aac2289e6"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\resources\\db\\migration\\V1__create_memories_table.sql": {
+    "mtime": 1780550671.7806544,
+    "hash": "d543a6dbec1a5aa20217e560858adf05"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\resources\\db\\migration\\V2__create_memory_versions_table.sql": {
+    "mtime": 1780550671.7806544,
+    "hash": "33c19bb17381db68a494ce5cf8f0f7fa"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\resources\\db\\migration\\V3__create_memory_conflicts_table.sql": {
+    "mtime": 1780550671.7806544,
+    "hash": "98c3f2abcb6c0b50c9a46e87b5e65a65"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\resources\\db\\migration\\V4__create_audit_log_table.sql": {
+    "mtime": 1780550671.7806544,
+    "hash": "0fdc41e0a7da84b314091a9f88e2e84f"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\resources\\db\\migration\\V5__create_pruning_queue_table.sql": {
+    "mtime": 1780550671.7806544,
+    "hash": "6479af58d9aaf2bef3ea9cf336c41d2e"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\resources\\db\\migration\\V6__create_embedding_model_versions_table.sql": {
+    "mtime": 1780550671.7806544,
+    "hash": "d5ccdb0c45cd1d8bb199cfe609412cf5"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\resources\\db\\migration\\V7__force_rls.sql": {
+    "mtime": 1780550671.7806544,
+    "hash": "85aa23c9a474f69159fd7c7b6f525359"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\test\\java\\com\\aimemory\\memory\\api\\MemoryControllerTest.java": {
+    "mtime": 1780550671.783992,
+    "hash": "ba3b231d1b27d7cd9dae006fd5b228a1"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\test\\java\\com\\aimemory\\memory\\api\\dto\\DtoTest.java": {
+    "mtime": 1780550671.783992,
+    "hash": "23889223ab72eb1b88c8bfbda1c2dcac"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\test\\java\\com\\aimemory\\memory\\config\\TenantRlsIntegrationTest.java": {
+    "mtime": 1780550671.785999,
+    "hash": "ccb980a1585db2adc95be0beb669c37b"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\test\\java\\com\\aimemory\\memory\\domain\\MemoryConflictTest.java": {
+    "mtime": 1780550671.785999,
+    "hash": "f022b958823ba14f88e864644e22d078"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\test\\java\\com\\aimemory\\memory\\domain\\MemoryTest.java": {
+    "mtime": 1780550671.785999,
+    "hash": "4f9e93f7a60592961280c03782e43774"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\test\\java\\com\\aimemory\\memory\\domain\\MemoryVersionTest.java": {
+    "mtime": 1780550671.785999,
+    "hash": "0d761f95f9bf1a62b3d495e8cd885b55"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\test\\java\\com\\aimemory\\memory\\domain\\enums\\EnumsTest.java": {
+    "mtime": 1780550671.785999,
+    "hash": "4ac77ebde5f31db7ac1a886d995ca991"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\test\\java\\com\\aimemory\\memory\\kafka\\MemoryEventPublisherTest.java": {
+    "mtime": 1780550671.785999,
+    "hash": "d319ba99b12a919257b8a7e06dba535a"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\test\\java\\com\\aimemory\\memory\\service\\ConflictResolutionServiceTest.java": {
+    "mtime": 1780550671.7895298,
+    "hash": "694bd3a25d63e65aed15fd003f9bcb25"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\test\\java\\com\\aimemory\\memory\\service\\MemoryVersionServiceTest.java": {
+    "mtime": 1780550671.7895298,
+    "hash": "31c3b3049b951788aa63bef324795c20"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\test\\java\\com\\aimemory\\memory\\service\\MemoryWriteServiceTest.java": {
+    "mtime": 1780550671.7895298,
+    "hash": "5e22013c4f2b0ce834cb114a591a578f"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\pruning-engine\\build.gradle.kts": {
+    "mtime": 1780550671.791037,
+    "hash": "2df5ad3214624414bb687d0997d2a598"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\pruning-engine\\src\\main\\java\\com\\aimemory\\pruning\\PruningEngineApplication.java": {
+    "mtime": 1780550671.791037,
+    "hash": "ce4100b32fbfd2bfeff2df67f361263f"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\pruning-engine\\src\\main\\java\\com\\aimemory\\pruning\\scheduler\\PruningScheduler.java": {
+    "mtime": 1780550671.7930589,
+    "hash": "8effd4207fde07fcdafa8472c8033c8c"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\pruning-engine\\src\\main\\java\\com\\aimemory\\pruning\\service\\PruningDecisionService.java": {
+    "mtime": 1780550671.793566,
+    "hash": "ffdd9f81eff0af519b7065047a0c19cb"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\pruning-engine\\src\\main\\java\\com\\aimemory\\pruning\\service\\SoftDeleteService.java": {
+    "mtime": 1780550671.793566,
+    "hash": "46b31143ae35d7d894089f4f1c17fd28"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\pruning-engine\\src\\main\\java\\com\\aimemory\\pruning\\service\\SummarizationService.java": {
+    "mtime": 1780550671.793566,
+    "hash": "bc2a9dbecc36e07cd73088f7b0293104"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\pruning-engine\\src\\test\\java\\com\\aimemory\\pruning\\service\\PruningDecisionServiceTest.java": {
+    "mtime": 1780550671.7965126,
+    "hash": "66d6b3ef8e8439026edae78e5301345f"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\pruning-engine\\src\\test\\java\\com\\aimemory\\pruning\\service\\SoftDeleteServiceTest.java": {
+    "mtime": 1780550671.7965126,
+    "hash": "35180ed005355a131e3f50fabd77dffc"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\pruning-engine\\src\\test\\java\\com\\aimemory\\pruning\\service\\SummarizationServiceTest.java": {
+    "mtime": 1780550671.7965126,
+    "hash": "e7d316e5e0d419c13df252132f8990bc"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\ranking-engine\\build.gradle.kts": {
+    "mtime": 1780550671.7965126,
+    "hash": "603624ddf0210ab5e21561d9e221baa8"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\ranking-engine\\src\\main\\java\\com\\aimemory\\ranking\\RankingEngineApplication.java": {
+    "mtime": 1780550671.799372,
+    "hash": "3d37f5402f79c317dc5351e8d8fe422d"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\ranking-engine\\src\\main\\java\\com\\aimemory\\ranking\\kafka\\MemoryRankingConsumer.java": {
+    "mtime": 1780550671.799372,
+    "hash": "f89909df913d7dabc64022d8c74fcf12"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\ranking-engine\\src\\main\\java\\com\\aimemory\\ranking\\service\\EntitySalienceScorer.java": {
+    "mtime": 1780550671.799372,
+    "hash": "6cfbdb0170dfef6f42c617b6f54bf937"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\ranking-engine\\src\\main\\java\\com\\aimemory\\ranking\\service\\FrequencyScorer.java": {
+    "mtime": 1780550671.799372,
+    "hash": "90e8cc90862f2e572e1a5f7a783f2980"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\ranking-engine\\src\\main\\java\\com\\aimemory\\ranking\\service\\ImportanceScoringService.java": {
+    "mtime": 1780550671.8013785,
+    "hash": "2457eb524e2554f5e77d11519a172db4"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\ranking-engine\\src\\main\\java\\com\\aimemory\\ranking\\service\\RecencyDecayCalculator.java": {
+    "mtime": 1780550671.8013785,
+    "hash": "68b8fd2c57dfb0fa4826beb7c9329aca"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\ranking-engine\\src\\test\\java\\com\\aimemory\\ranking\\service\\ImportanceScoringServiceTest.java": {
+    "mtime": 1780550671.8033996,
+    "hash": "4cdde80629933ebb88601c8b8bab0fe0"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\build.gradle.kts": {
+    "mtime": 1780550671.8033996,
+    "hash": "51defc71d4303457cc91ce6267542593"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\main\\java\\com\\aimemory\\retrieval\\RetrievalServiceApplication.java": {
+    "mtime": 1780550671.8078957,
+    "hash": "3e077e732248c27faefa4cc6acdea502"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\main\\java\\com\\aimemory\\retrieval\\api\\RetrievalController.java": {
+    "mtime": 1780550671.8078957,
+    "hash": "64575972995dc56ed87e5700ac63ae8e"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\main\\java\\com\\aimemory\\retrieval\\grpc\\RetrievalGrpcServer.java": {
+    "mtime": 1780550671.8089025,
+    "hash": "078b353013e1767420b4fbf562e202df"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\main\\java\\com\\aimemory\\retrieval\\kafka\\CacheInvalidationConsumer.java": {
+    "mtime": 1780550671.8089025,
+    "hash": "23952bcf192d05918d540948de98ad7d"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\main\\java\\com\\aimemory\\retrieval\\pipeline\\ContextBudgetAllocator.java": {
+    "mtime": 1780550671.8089025,
+    "hash": "2bc474a7a68327e268c81c8be2daabd4"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\main\\java\\com\\aimemory\\retrieval\\pipeline\\HybridSearchService.java": {
+    "mtime": 1780550671.8089025,
+    "hash": "cf830e312ac1928dd6d5518e2cce4773"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\main\\java\\com\\aimemory\\retrieval\\pipeline\\QueryRewriterService.java": {
+    "mtime": 1780550671.8117003,
+    "hash": "a4a10f1bb0c1e435ae7cac214446e54a"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\main\\java\\com\\aimemory\\retrieval\\pipeline\\ReRankingService.java": {
+    "mtime": 1780550671.8117003,
+    "hash": "e0dd880f662b6645030324d21c941d67"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\main\\java\\com\\aimemory\\retrieval\\pipeline\\RetrievalPipelineService.java": {
+    "mtime": 1780550671.8117003,
+    "hash": "39281c044e61fcfa201a0e26f0a6fa93"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\test\\java\\com\\aimemory\\retrieval\\pipeline\\ContextBudgetAllocatorTest.java": {
+    "mtime": 1780550671.8117003,
+    "hash": "e13382ff34d0069a568a77d242c6f65d"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\test\\java\\com\\aimemory\\retrieval\\pipeline\\HybridSearchServiceTest.java": {
+    "mtime": 1780550671.8117003,
+    "hash": "9cab2fcc32a0d133b38411ff0fb3fcc2"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\test\\java\\com\\aimemory\\retrieval\\pipeline\\QueryRewriterServiceTest.java": {
+    "mtime": 1780550671.8117003,
+    "hash": "84daa65f0559a0f8e6326d7ac5623d69"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\test\\java\\com\\aimemory\\retrieval\\pipeline\\ReRankingServiceTest.java": {
+    "mtime": 1780550671.8117003,
+    "hash": "4e89ed4e11961cdbb29d1e95c2af60c9"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\build.gradle.kts": {
+    "mtime": 1780550671.8163161,
+    "hash": "5b9ad352299a5a10c4c38eb0ce74c51c"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\src\\main\\java\\com\\aimemory\\shared\\domain\\AuditEvent.java": {
+    "mtime": 1780550671.8163161,
+    "hash": "469cbb84cff07e2acd051934f2d4cc34"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\src\\main\\java\\com\\aimemory\\shared\\domain\\TenantContext.java": {
+    "mtime": 1780550671.8183234,
+    "hash": "f225515837345d58cbc58dc9a6433677"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\src\\main\\java\\com\\aimemory\\shared\\exception\\AiMemoryException.java": {
+    "mtime": 1780550671.8183234,
+    "hash": "bb1266de2047c29c697c90785d7b875d"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\src\\main\\java\\com\\aimemory\\shared\\exception\\ErrorResponse.java": {
+    "mtime": 1780550671.8183234,
+    "hash": "8e2d4bac2fbaf86f9d655233df5b39aa"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\src\\main\\java\\com\\aimemory\\shared\\exception\\GlobalExceptionHandler.java": {
+    "mtime": 1780550671.8183234,
+    "hash": "fde3886bc0914985d26cfb73793eb8de"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\src\\main\\java\\com\\aimemory\\shared\\exception\\MemoryNotFoundException.java": {
+    "mtime": 1780550671.8183234,
+    "hash": "845c2c5a5f845fc91f914b9674b5f873"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\src\\main\\java\\com\\aimemory\\shared\\exception\\TenantIsolationException.java": {
+    "mtime": 1780550671.8183234,
+    "hash": "d0455901e47727566804a58f84280fe5"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\src\\main\\java\\com\\aimemory\\shared\\util\\JsonUtils.java": {
+    "mtime": 1780550671.8183234,
+    "hash": "7548f0a33f5108a053a72760f527af98"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\src\\test\\java\\com\\aimemory\\shared\\domain\\AuditEventTest.java": {
+    "mtime": 1780550671.8218484,
+    "hash": "6fe3b2196e77cc0e837c46e111336a53"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\src\\test\\java\\com\\aimemory\\shared\\domain\\TenantContextTest.java": {
+    "mtime": 1780550671.8241346,
+    "hash": "94b80a421934c04703b540c0a4bc59dc"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\src\\test\\java\\com\\aimemory\\shared\\exception\\AiMemoryExceptionTest.java": {
+    "mtime": 1780550671.8241346,
+    "hash": "0a1fc82255707fee916649904c245be5"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\src\\test\\java\\com\\aimemory\\shared\\exception\\ErrorResponseTest.java": {
+    "mtime": 1780550671.8241346,
+    "hash": "ddedd799059401125095f7526cde1d4b"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\shared-lib\\src\\test\\java\\com\\aimemory\\shared\\util\\JsonUtilsTest.java": {
+    "mtime": 1780550671.8261442,
+    "hash": "1b9a81b2ed332d4eb135fb6b23f097a6"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\docker-compose.yml": {
+    "mtime": 1780550671.725224,
+    "hash": "8a7e5b31e666f9e8af60f5108d688333"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\PRD.md": {
+    "mtime": 1780550671.6941884,
+    "hash": "d40043f091985a97a7530ab379dcdabb"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\README.md": {
+    "mtime": 1780550671.6941884,
+    "hash": "c9e655131a34e3d9562bb84d5778ee6d"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\agent-service\\src\\main\\resources\\application.yml": {
+    "mtime": 1780550671.7018888,
+    "hash": "b704eb06d1180392bc408bfb7e95f28f"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\agent-service\\src\\test\\resources\\application-test.yml": {
+    "mtime": 1780550671.7054355,
+    "hash": "d5b85cbe2a5c8cefc42ef9437ac2e154"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\auth-service\\src\\main\\resources\\application.yml": {
+    "mtime": 1780550671.7117007,
+    "hash": "f7606c31354ffcb1350edcaebda0578c"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\compliance-service\\src\\main\\resources\\application.yml": {
+    "mtime": 1780550671.7184782,
+    "hash": "edd1dc5a2e7882a7aef8b389545e20a9"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\docs\\adr\\ADR-001-vector-db-selection.md": {
+    "mtime": 1780550671.7283857,
+    "hash": "076c070eda0bb879f5286f82e8d2652f"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\docs\\adr\\ADR-002-kafka-read-path-exclusion.md": {
+    "mtime": 1780550671.7289312,
+    "hash": "e4583df13d7e2a23b587aa21dc7da131"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\docs\\adr\\ADR-003-heuristic-importance-scoring.md": {
+    "mtime": 1780550671.7300816,
+    "hash": "7f77cd5ea7510fe29b5f28b2b0979d1d"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\docs\\runbooks\\embedding-model-upgrade.md": {
+    "mtime": 1780550671.7300816,
+    "hash": "2c2039e596099ee353d1740d143a8d6f"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\docs\\runbooks\\gdpr-erasure-process.md": {
+    "mtime": 1780550671.7300816,
+    "hash": "35b3719758918c5078431586f7540b47"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\embedding-service\\src\\main\\resources\\application.yml": {
+    "mtime": 1780550671.7393913,
+    "hash": "5176fc57b5a86f148bbbf7d5e9b462dc"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\gateway\\src\\main\\resources\\application.yml": {
+    "mtime": 1780550671.751578,
+    "hash": "97684059f9be038848bc94359bfe9bc1"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\k8s\\agent-service-deployment.yaml": {
+    "mtime": 1780550671.7579877,
+    "hash": "74b99f6cbc5fa6a2c60eb93d15146568"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\k8s\\auth-service-deployment.yaml": {
+    "mtime": 1780550671.7579877,
+    "hash": "df0a202b717845d0bf7ef1bc301cd856"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\k8s\\compliance-service-deployment.yaml": {
+    "mtime": 1780550671.7599964,
+    "hash": "89a83f603800a8fd293a1628f014d75d"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\k8s\\configmaps.yaml": {
+    "mtime": 1780550671.7599964,
+    "hash": "ecf645baa48bed71ec29c75007fed64f"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\k8s\\embedding-service-deployment.yaml": {
+    "mtime": 1780550671.7599964,
+    "hash": "70b2a6ccf3d88771ba3a360befb82367"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\k8s\\gateway-deployment.yaml": {
+    "mtime": 1780550671.7599964,
+    "hash": "a09b3000ce7e8844dff72c2ac80b0ec3"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\k8s\\ingress.yaml": {
+    "mtime": 1780550671.7615676,
+    "hash": "cfa0c5bf04c817bda615324adbf40d35"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\k8s\\memory-service-deployment.yaml": {
+    "mtime": 1780550671.7635868,
+    "hash": "1fcccd73a07c2d8852272057967a3576"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\k8s\\namespace.yaml": {
+    "mtime": 1780550671.7635868,
+    "hash": "cbed30cfea6947abc52e55c42235f631"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\k8s\\prometheus-config.yaml": {
+    "mtime": 1780550671.7635868,
+    "hash": "3349da90ea88cb1f8d2513f07c51b405"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\k8s\\pruning-engine-deployment.yaml": {
+    "mtime": 1780550671.7635868,
+    "hash": "7356c5e1d8aa5ab64c3c7b7d3f37b0d7"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\k8s\\ranking-engine-deployment.yaml": {
+    "mtime": 1780550671.7635868,
+    "hash": "8e2891c6c7f5c91aa4b5d4bed9df5351"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\k8s\\retrieval-service-deployment.yaml": {
+    "mtime": 1780550671.765596,
+    "hash": "bbab78f20f2275c1635eba24d214432e"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\memory-service\\src\\main\\resources\\application.yml": {
+    "mtime": 1780550671.7789626,
+    "hash": "73a36f94e8efcba441356bc6ad7d7b5e"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\pruning-engine\\src\\main\\resources\\application.yml": {
+    "mtime": 1780550671.793566,
+    "hash": "ecf270f69eed86046865e6d5afc33029"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\ranking-engine\\src\\main\\resources\\application.yml": {
+    "mtime": 1780550671.8013785,
+    "hash": "5c188bb7f3c7a609f73534ffb6ef495b"
+  },
+  "C:\\Users\\sarth\\Desktop\\Distributed-AI-Memory-System-DAMS-\\retrieval-service\\src\\main\\resources\\application.yml": {
+    "mtime": 1780550671.8117003,
+    "hash": "7294ea9ee3e006ff6213a4b99c626d75"
+  }
+}
